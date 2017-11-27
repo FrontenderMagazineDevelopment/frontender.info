@@ -8,19 +8,11 @@ export PROCESS_NAME=frontender.info
 
 mkdir ${RESULT_DIR}
 shopt -s extglob
-ls
-echo '1';
 mv -f -v !(${RESULT_DIR}) ./${RESULT_DIR}
-echo '2';
 mv -f -v ./{.[!.],}* ./${RESULT_DIR}
 ls -lah ./${RESULT_DIR}
-echo '3';
-ls -lah
 tar -czf ${ARCH_NAME} ${RESULT_DIR}
-ls -lah
-echo 'scp';
 sshpass -e scp -C -o StrictHostKeyChecking=no ${ARCH_NAME} ${SSH_USER}@${SSH_IP}:${WEB_PATH}
-echo 'ssh';
 sshpass -e ssh -C ${SSH_USER}@${SSH_IP} << EOF
 cd ${WEB_PATH};
 tar -xzf ./${ARCH_NAME} -C ./;
