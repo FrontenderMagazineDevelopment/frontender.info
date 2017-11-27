@@ -31,7 +31,11 @@ rm -dRf ${SYMLINK_NAME}
 ln -ds ${RESULT_DIR} ./${SYMLINK_NAME}
 cd ./${SYMLINK_NAME}
 npm run build
+echo 'builded'
 pm2 stop ${PROCESS_NAME}
+echo 'stoped'
 pm2 delete ${PROCESS_NAME}
+echo 'deleted'
 pm2 start ./lib/server.js --watch --name="${PROCESS_NAME}"
+echo 'started'
 EOF

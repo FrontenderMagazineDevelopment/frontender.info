@@ -10,7 +10,7 @@
     "build": "npm-run-all build:*",
     "build:js": "npm run clean && babel source --minified -s true -d lib --ignore __tests__/**,__mocks__/** ",
     "build:css": "gulp css:common",
-    "build:doc": "documentation build src/*.js* -o public -f html",
+    "build:doc": "documentation build source/*.js* -o public -f html",
     "test": "export NODE_ENV=test && jest --no-cache",
     "test:watch": "export NODE_ENV=test && jest --no-cache --watch",
     "test:coverage": "export NODE_ENV=test && jest --no-cache --coverage",
