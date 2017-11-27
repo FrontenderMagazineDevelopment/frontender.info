@@ -37,7 +37,7 @@ if (!fs.existsSync(CONFIG_PATH))
 const config = require(CONFIG_PATH); // eslint-disable-line
 const { name, version } = require("../package.json");
 
-const PORT = process.env.PORT || 3050;
+const PORT = process.env.PORT || 4000;
 const server = restify.createServer({
   name,
   version,
