@@ -30,8 +30,11 @@ cd ..
 rm -dRf ${SYMLINK_NAME}
 ln -ds ${RESULT_DIR} ./${SYMLINK_NAME}
 cd ./${SYMLINK_NAME}
-npm run build
-echo 'builded'
+echo 'symlink created'
+npm run build:js
+echo 'js builded'
+npm run build:css
+echo 'css builded'
 pm2 stop ${PROCESS_NAME}
 echo 'stoped'
 pm2 delete ${PROCESS_NAME}
