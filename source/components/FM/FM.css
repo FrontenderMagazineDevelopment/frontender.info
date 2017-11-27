@@ -1,0 +1,122 @@
+.FM {
+
+  &__link {
+
+    &--title {
+      text-decoration: none;
+      color: #333333;
+    }
+  }
+
+  &__tags {
+    margin: 20px 0;
+    color: #333333;
+
+    a {
+      font-size: 16px;
+      line-height: 24px;
+      color: #007b8a;
+
+      &:hover,
+      &:focus {
+        color: #0ba5b7;
+        text-decoration: none;
+        outline: 0;
+      }
+    }
+  }
+
+  &__original {
+    color: #333333;
+
+    a {
+      font-size: 16px;
+      line-height: 24px;
+      color: #007b8a;
+
+      &:hover,
+      &:focus {
+        color: #0ba5b7;
+        text-decoration: none;
+        outline: 0;
+      }
+    }
+  }
+
+  &__footer {
+    line-height: 20px;
+    font-size: 12px;
+    color: #dddddd;
+    max-width: 760px;
+    padding: 0 30px;
+    margin: 40px auto 20px;
+
+    a {
+      color: #dddddd;
+
+      &:hover,
+      &:focus {
+        color: #999999;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__header {
+    max-width: 760px;
+    padding: 0 30px;
+    margin: 40px auto;
+  }
+
+  &__title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-family: Helvetica, sans-serif;
+
+    @media (max-width:500px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__content {
+    max-width: 760px;
+    margin: auto;
+    padding: 0 30px;
+  }
+
+  &__contributors {
+    margin: 20px 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+
+    a {
+      font-size: 16px;
+      line-height: 24px;
+      color: #007b8a;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        color: #0ba5b7;
+        outline: 0;
+      }
+    }
+  }
+
+  &__authors {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 0;
+  }
+
+  &__person {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    flex-shrink: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

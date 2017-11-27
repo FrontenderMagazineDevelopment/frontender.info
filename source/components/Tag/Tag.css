@@ -1,0 +1,7 @@
+.Tag {
+  color: #0ba5b7;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,4 @@
+.Articles {
+  display: flex;
+  flex-wrap: wrap;
+}

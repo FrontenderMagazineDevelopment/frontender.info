@@ -1,0 +1,47 @@
+.Person {
+  font-size: 16px;
+  line-height: 20px;
+  height: 80px;
+  padding-left: 100px;
+  position: relative;
+
+  &__socials {
+    overflow: hidden;
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    line-height: 80px;
+
+    color: #ffffff;
+    background-color: #cc0000;
+    box-shadow: inset -10px 0 0 0 #990000, inset -50px 0 0 0 #bb0000;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .Person {
+    font-size: 11px;
+    line-height: 14px;
+    height: 56px;
+    padding-left: 66px;
+
+    &__avatar {
+      width: 56px;
+      height: 56px;
+      line-height: 56px;
+    }
+  }
+}

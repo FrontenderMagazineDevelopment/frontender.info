@@ -1,0 +1,10 @@
+.Contributor {
+  color: #007b8a;
+
+  &:focus,
+  &:hover {
+    color: #0ba5b7;
+    text-decoration: none;
+    outline: 0;
+  }
+}

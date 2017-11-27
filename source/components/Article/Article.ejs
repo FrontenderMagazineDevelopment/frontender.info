@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title><%= translation.title %> | Frontender Magazine</title>
+
+    <link rel="index" href="https://frontender.info/">
+    <link rel="canonical" href="<%= translation.url %>">
+    <link rel="alternate" hreflang="<%= original.lang %>" href="<%= original.url %>">
+
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@frontenderinfo"/>
+    <meta name="twitter:title" content="<%= translation.title %>"/>
+    <meta name="twitter:description" content="<%= description %>"/>
+
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="<%= translation.url %>"/>
+    <meta property="og:site_name" content="Frontender Magazine">
+    <meta property="og:title" content="<%= translation.title %>"/>
+    <meta property="og:description" content="<%= description %>"/>
+
+    <meta property="article:published_time" content="<%= translation.published %>">
+
+    <meta name="description" content="<%= description %>">
+
+    <link rel="stylesheet" href="https://frontender.info/styles/styles.css">
+    <% if ( customStylesTrue ) { %>
+      <link rel="stylesheet" media="foo" href="styles.css">
+    <% } %>
+  </head>
+  <body>
+    <header class="FM__header">
+      <a class="FM__link FM__link--title" rel="index" tabindex="0" href="https://frontender.info">
+        <h1 class="FM__title">Frontender Magazine</h1>
+      </a>
+    </header>
+    <article class="FM__content" itemscope itemtype="http://schema.org/Article">
+      <main itemprop="articleBody" role="main" class="FM__article Article">
+        <%- content %>
+      </main>
+      <% if ( tags ) { %>
+      <nav class="FM__tags">
+        Тэги: <%- tags %>
+      </nav>
+      <% } %>
+      <% if (original.domain !== 'frontender.info') { %>
+      <section class="FM__original">
+        Оригинальная статья: <a itemprop="translationOfWork" tabindex="0" rel="external" href="<%= original.url %>"><%= original.title %></a>
+      </section>
+      <% } %>
+      <% if (contributors.length > 0) { %>
+        <section class="FM__contributors">
+          Статью вычитывали: <%- contributors %>
+        </section>
+      <% } %>
+      <section class="FM__authors">
+        <%- authors %>
+      </section>
+    </article>
+    <footer class="FM__footer">
+      <p>© 2013 Frontender Magazine</p>
+      <p>Кроме материалов, опубликованных под лицензией <a rel="license" tabindex="0" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a></p>
+    </footer>
+    <% if ( customStylesTrue ) { %>
+      <link rel="stylesheet" media="all" href="styles.css">
+    <% } %>
+  </body>
+</html>

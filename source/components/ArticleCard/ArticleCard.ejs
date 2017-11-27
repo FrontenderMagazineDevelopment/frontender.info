@@ -1,0 +1,19 @@
+<article class="ArticleCard">
+  <section class="ArticleCard__author">
+    <%=
+      author.map((author)=>{
+        return author.name
+      }).join(', ')
+    %>
+    <time title="<%= published %>" datetime="<%= published %>"><%= publishedHuman %></time> написал:
+  </section>
+  <h2 class="ArticleCard__title">«<a class="ArticleCard__link" href="<%= url %>"><%= title %></a>»</h2><% if (isTranslation) { %><section class="ArticleCard__author">,
+    a <%=
+      translator.map((author)=>{
+        return author.name
+      }).join(', ')
+    %> <time title="<%= published %>" datetime="<%= translated %>"><%= translatedHuman %></time> перевел её.
+  </section>
+  <% } %>
+  <nav class="ArticleCard__tags"></nav>
+</article>

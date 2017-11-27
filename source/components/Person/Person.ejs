@@ -1,0 +1,24 @@
+<article itemprop="<%= user.type %>" itemscope itemtype="http://schema.org/Person"
+  class="Person <%= user.className ? user.className : ''  %>">
+  <img class="Person__avatar" src="<%= user.avatar %>" alt="Аватар">
+  <p itemprop="name" class="Person__name"><%= user.name %></p>
+  <section class="Person__socials">
+    <% if (user.blog) { %>
+    <p class="Social">
+      <a rel="author" tabindex="0" class="Social__link" href="<%= user.blog %>"><%= user.blog %></a>
+    </p>
+    <% } %>
+    <% if (user.twitter) { %>
+    <p class="Social">
+      <b class="Social__type">Twitter:</b>
+      <a rel="author" tabindex="0" class="Social__link" href="<%= user.twitter %>"><%= user.twitter %></a>
+    </p>
+    <% } %>
+    <% if (user.github) { %>
+    <p class="Social">
+      <b class="Social__type">GitHub:</b>
+      <a rel="author" tabindex="0" class="Social__link" href="<%= user.github %>"><%= user.github %></a>
+    </p>
+    <% } %>
+  </section>
+</article>

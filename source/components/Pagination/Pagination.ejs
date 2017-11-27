@@ -1,0 +1,9 @@
+<nav class="Pagination">
+  <% for (var i=1; i<pagesCount; i++) { %>
+    <%if (i === page) {%>
+      <span class="Pagination__page Pagination__page--current"><%=i%></span>
+    <% } else { %>
+      <a href="?page=<%= i + (params.length > 0 ? '&' + params : '') %>" class="Pagination__page"><%=i%></a>
+    <% } %>
+  <% } %>
+</nav>

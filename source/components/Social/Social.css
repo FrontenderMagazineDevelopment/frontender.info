@@ -1,0 +1,28 @@
+.Social {
+  white-space: nowrap;
+  line-height: 20px;
+  margin: 0;
+
+  &__link {
+    color: #007b8a;
+
+    &:hover,
+    &:focus {
+      color: #0ba5b7;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+
+  &__type {
+    font-weight: normal;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .Social {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}

@@ -1,0 +1,205 @@
+.Article {
+
+  table {
+    width: 100%;
+    display: block;
+    max-width: 100%;
+    overflow: auto;
+    margin: 1.47rem -20px;
+
+    thead {
+
+      th {
+        text-align: left;
+        padding-bottom: 1.47rem;
+        font-weight: bold;
+      }
+    }
+
+    tbody {
+
+      td {
+        padding: 0.735rem 0.735rem 0.735rem 0;
+      }
+    }
+  }
+
+  > pre {
+    margin-top: 1.47rem;
+    margin-bottom: 1.47rem;
+    padding-top: 1.47rem;
+    padding-bottom: 1.47rem;
+    background-color: #f8f8f8;
+    padding-left: 9999px;
+    margin-left: -9999px;
+    box-shadow: 9999px 0 0 0 #f8f8f8;
+    max-width: 100%;
+    overflow: auto;
+
+    code {
+      padding: 0;
+      display: block;
+      font-size: 14px;
+      line-height: 1.6rem;
+    }
+  }
+
+  code {
+    font-family: 'Droid Sans Mono', 'Lucidia Console', 'Menlo', 'Courier New', Courier, monospace;
+    background-color: #f8f8f8;
+  }
+
+  p>code {
+    display: inline-block;
+    padding: 0 0.25em;
+  }
+
+  a {
+    color: #007b8a;
+    padding: .75rem;
+    margin: -.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  a:focus,
+  a:hover {
+    outline: 0;
+    color: #0ba5b7;
+    text-decoration: none;
+  }
+
+  strong,
+  b {
+    font-weight: bold;
+  }
+
+  del,
+  s,
+  s a,
+  del a,
+  del b,
+  del strong,
+  del i,
+  del m,
+  s code,
+  del code {
+    font-family: inherit;
+    text-decoration: line-through;
+    color: #999999;
+    margin: 0;
+    padding: 0;
+    background: none;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: inherit;
+    display: inline-block;
+    vertical-align: baseline;
+  }
+
+  rem,
+  i {
+    font-style: italic;
+  }
+
+  blockquote {
+    border-left-width: 4px;
+    border-left-style: solid;
+    border-left-color: #c7c7c7;
+    font-size: 18px;
+    line-height: 1.47;
+    margin: 1.47rem 0;
+    padding: 0 1rem 0 1.47rem;
+  }
+
+  iframe,
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  ol,
+  ul {
+    list-style: disc outside;
+    margin: 1.47rem 0 1.47rem 2.84rem;
+    font-size: 1.1rem;
+    line-height: 1.47;
+  }
+
+  ul ul {
+    list-style: circle outside;
+    margin: 0 0 0 2.375rem;
+  }
+
+  ul ol {
+    list-style: decimal outside;
+    margin: 0 0 0 2.375rem;
+  }
+
+  ol {
+    list-style: decimal outside;
+  }
+
+  ol ol {
+    list-style: disc outside;
+    margin: 0 0 0 2.375rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: #000000;
+    line-height: 1.1;
+    margin: 1.47rem 0 .7rem;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin: 1rem 0;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
+
+  h4 {
+    font-size: 21px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  h1 code,
+  h2 code,
+  h3 code,
+  h4 code,
+  h5 code {
+    background: none;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+  }
+
+  h1 a,
+  h2 a,
+  h3 a,
+  h4 a,
+  h5 a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  p {
+    font-size: 19px;
+    line-height: 1.47;
+    margin: 1.47rem 0;
+  }
+}

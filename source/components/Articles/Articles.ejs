@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Frontender Magazine</title>
+    <link rel="index" href="https://frontender.info/">
+    <link rel="stylesheet" href="/styles/styles.css">
+  </head>
+  <body>
+    <header class="FM__header">
+      <a class="FM__link FM__link--title" rel="index" tabindex="0" href="https://frontender.info/">
+        <h1 class="FM__title">Frontender Magazine</h1>
+      </a>
+    </header>
+    <section class="FM__content">
+      <%- include(articleFormTemplate, {keywords}) %>
+      <main class="Articles">
+        <% articles.forEach(function (article) { %>
+          <%- include(articleCardTemplate, {
+            isTranslation: article.isTranslation,
+            title: article.title,
+            url: article.url,
+            published: article.published,
+            translated: article.translated,
+            translator: article.translator,
+            author: article.author,
+            translatedHuman: article.translatedHuman,
+            publishedHuman: article.publishedHuman,
+          }); %>
+        <% }); %>
+      </main>
+      <%- include(articlePaginationTemplate, {
+        params,
+        pagesCount,
+        page,
+      }) %>
+      </section>
+    <footer class="FM__footer">
+      <p>© 2013 Frontender Magazine</p>
+      <p>Кроме материалов, опубликованных под лицензией <a rel="license" tabindex="0" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons</a></p>
+    </footer>
+  </body>
+</html>
