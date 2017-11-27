@@ -88,7 +88,9 @@ server.get(
       delete req.query.s;
     }
 
-    let params = req.query;
+    let params = {
+      ...req.query
+    };
     delete params.page;
     params = queryString.stringify(params);
 
