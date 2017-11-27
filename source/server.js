@@ -84,6 +84,10 @@ server.get(
     name: "Show articles list"
   },
   async (req, res, next) => {
+    if (req.query.s !== undefined && req.query.s.trim().length === 0) {
+      delete req.query.s;
+    }
+
     let params = req.query;
     delete params.page;
     params = queryString.stringify(params);
@@ -101,10 +105,7 @@ server.get(
 
     query = [];
 
-    if (req.query.s !== undefined && req.query.s.trim().length === 0)
-      delete req.query.s;
-
-    if (req.query.s !== undefined && req.query.s.trim().length > 0) {
+    if (req.query.s !== undefined) {
       res.setHeader("Cache-Control", "no-cache");
       query.push({
         $match: {
