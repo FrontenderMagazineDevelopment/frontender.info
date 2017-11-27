@@ -2,7 +2,7 @@
 
 export RESULT_DIR=frontender.info.${TRAVIS_BUILD_NUMBER}
 export SSHPASS=${SSH_PASS}
-export ARCH_NAME=frontender.package.tgz
+export ARCH_NAME=frontender.info.package.tgz
 export SYMLINK_NAME=frontender.info
 export PROCESS_NAME=frontender.info
 
@@ -19,7 +19,6 @@ rm ./${ARCH_NAME};
 ls -dt ${WEB_PATH}*/ | tail -n +5 | xargs rm -rf;
 rm ./.env
 if [ ! -f ".env" ]; then
-    echo GITHUB_SECRET_TOKEN=${GITHUB_SECRET_TOKEN} >> .env;
     echo JWT_SECRET=${JWT_SECRET} >> .env
     echo COOKIE_SECRET=${COOKIE_SECRET} >> .env
 fi
