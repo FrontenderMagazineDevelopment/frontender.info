@@ -1,81 +1,79 @@
 /* global anchors */
 
 // add anchor links to headers
-anchors.options.placement = "left";
-anchors.add("h3");
+anchors.options.placement = 'left';
+anchors.add('h3');
 
 // Filter UI
-const tocElements = document.getElementById("toc").getElementsByTagName("li");
+var tocElements = document.getElementById('toc').getElementsByTagName('li');
 
-document.getElementById("filter-input").addEventListener("keyup", function(e) {
-  let i, element, children;
+document.getElementById('filter-input').addEventListener('keyup', function(e) {
+  var i, element, children;
 
   // enter key
   if (e.keyCode === 13) {
     // go to the first displayed item in the toc
     for (i = 0; i < tocElements.length; i++) {
       element = tocElements[i];
-      if (!element.classList.contains("display-none")) {
+      if (!element.classList.contains('display-none')) {
         location.replace(element.firstChild.href);
         return e.preventDefault();
       }
     }
   }
 
-  let match = function() {
+  var match = function() {
     return true;
   };
 
-  const value = this.value.toLowerCase();
+  var value = this.value.toLowerCase();
 
   if (!value.match(/^\s*$/)) {
     match = function(element) {
-      const html = element.firstChild.innerHTML;
+      var html = element.firstChild.innerHTML;
       return html && html.toLowerCase().indexOf(value) !== -1;
     };
   }
 
   for (i = 0; i < tocElements.length; i++) {
     element = tocElements[i];
-    children = Array.from(element.getElementsByTagName("li"));
+    children = Array.from(element.getElementsByTagName('li'));
     if (match(element) || children.some(match)) {
-      element.classList.remove("display-none");
+      element.classList.remove('display-none');
     } else {
-      element.classList.add("display-none");
+      element.classList.add('display-none');
     }
   }
 });
 
-const items = document.getElementsByClassName("toggle-sibling");
-for (let j = 0; j < items.length; j++) {
-  items[j].addEventListener("click", toggleSibling);
+var items = document.getElementsByClassName('toggle-sibling');
+for (var j = 0; j < items.length; j++) {
+  items[j].addEventListener('click', toggleSibling);
 }
 
 function toggleSibling() {
-  const stepSibling = this.parentNode.getElementsByClassName(
-    "toggle-target"
-  )[0];
-  const icon = this.getElementsByClassName("icon")[0];
-  const klass = "display-none";
+  var stepSibling = this.parentNode.getElementsByClassName('toggle-target')[0];
+  var icon = this.getElementsByClassName('icon')[0];
+  var klass = 'display-none';
   if (stepSibling.classList.contains(klass)) {
     stepSibling.classList.remove(klass);
-    icon.innerHTML = "▾";
+    icon.innerHTML = '▾';
   } else {
     stepSibling.classList.add(klass);
-    icon.innerHTML = "▸";
+    icon.innerHTML = '▸';
   }
 }
 
 function showHashTarget(targetId) {
   if (targetId) {
-    const hashTarget = document.getElementById(targetId);
+    var hashTarget = document.getElementById(targetId);
     // new target is hidden
     if (
       hashTarget &&
       hashTarget.offsetHeight === 0 &&
-      hashTarget.parentNode.parentNode.classList.contains("display-none")
+      hashTarget.parentNode.parentNode.classList.contains('display-none')
     ) {
-      hashTarget.parentNode.parentNode.classList.remove("display-none");
+      hashTarget.parentNode.parentNode.classList.remove('display-none');
     }
   }
 }
@@ -83,7 +81,7 @@ function showHashTarget(targetId) {
 function scrollIntoView(targetId) {
   // Only scroll to element if we don't have a stored scroll position.
   if (targetId && !history.state) {
-    const hashTarget = document.getElementById(targetId);
+    var hashTarget = document.getElementById(targetId);
     if (hashTarget) {
       hashTarget.scrollIntoView();
     }
@@ -95,35 +93,35 @@ function gotoCurrentTarget() {
   scrollIntoView(location.hash.substring(1));
 }
 
-window.addEventListener("hashchange", gotoCurrentTarget);
+window.addEventListener('hashchange', gotoCurrentTarget);
 gotoCurrentTarget();
 
-const toclinks = document.getElementsByClassName("pre-open");
-for (let k = 0; k < toclinks.length; k++) {
-  toclinks[k].addEventListener("mousedown", preOpen, false);
+var toclinks = document.getElementsByClassName('pre-open');
+for (var k = 0; k < toclinks.length; k++) {
+  toclinks[k].addEventListener('mousedown', preOpen, false);
 }
 
 function preOpen() {
   showHashTarget(this.hash.substring(1));
 }
 
-const split_left = document.querySelector("#split-left");
-const split_right = document.querySelector("#split-right");
-const split_parent = split_left.parentNode;
-const cw_with_sb = split_left.clientWidth;
-split_left.style.overflow = "hidden";
-const cw_without_sb = split_left.clientWidth;
-split_left.style.overflow = "";
+var split_left = document.querySelector('#split-left');
+var split_right = document.querySelector('#split-right');
+var split_parent = split_left.parentNode;
+var cw_with_sb = split_left.clientWidth;
+split_left.style.overflow = 'hidden';
+var cw_without_sb = split_left.clientWidth;
+split_left.style.overflow = '';
 
-Split(["#split-left", "#split-right"], {
-  elementStyle(dimension, size, gutterSize) {
+Split(['#split-left', '#split-right'], {
+  elementStyle: function(dimension, size, gutterSize) {
     return {
-      "flex-basis": `calc(${size}% - ${gutterSize}px)`
+      'flex-basis': 'calc(' + size + '% - ' + gutterSize + 'px)'
     };
   },
-  gutterStyle(dimension, gutterSize) {
+  gutterStyle: function(dimension, gutterSize) {
     return {
-      "flex-basis": `${gutterSize}px`
+      'flex-basis': gutterSize + 'px'
     };
   },
   gutterSize: 20,
@@ -154,17 +152,17 @@ function loadState(ev) {
   }
 }
 
-window.addEventListener("load", () => {
+window.addEventListener('load', function() {
   // Restore after Firefox scrolls to hash.
-  setTimeout(() => {
+  setTimeout(function() {
     loadState();
     // Update with initial scroll position.
     updateState();
     // Update scroll positions only after we've loaded because Firefox
     // emits an initial scroll event with 0.
-    split_left.addEventListener("scroll", updateState);
-    split_right.addEventListener("scroll", updateState);
+    split_left.addEventListener('scroll', updateState);
+    split_right.addEventListener('scroll', updateState);
   }, 1);
 });
 
-window.addEventListener("popstate", loadState);
+window.addEventListener('popstate', loadState);

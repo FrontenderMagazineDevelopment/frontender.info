@@ -1,32 +1,32 @@
 .documentation {
   font-family: Helvetica, sans-serif;
-  color: #666666;
+  color: #666;
   line-height: 1.5;
   background: #f5f5f5;
 }
 
 .black {
-  color: #666666;
+  color: #666;
 }
 
 .bg-white {
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 h4 {
-  margin: 20px 0 10px;
+  margin: 20px 0 10px 0;
 }
 
 .documentation h3 {
-  color: #000000;
+  color: #000;
 }
 
 .border-bottom {
-  border-color: #dddddd;
+  border-color: #ddd;
 }
 
 a {
-  color: #1184ce;
+  color: #1184CE;
   text-decoration: none;
 }
 
@@ -56,7 +56,7 @@ section:target h3 {
 
 .documentation td,
 .documentation th {
-  padding: .25rem;
+    padding: .25rem .25rem;
 }
 
 h1:hover .anchorjs-link,
@@ -77,7 +77,6 @@ h4:hover .anchorjs-link {
 }
 
 @media (min-width: 52em) {
-
   .fix-margin-3 {
     margin-left: 25%;
   }
@@ -89,7 +88,7 @@ h4:hover .anchorjs-link {
 }
 
 .fill-light {
-  background: #f9f9f9;
+  background: #F9F9F9;
 }
 
 .width2 {
@@ -103,7 +102,7 @@ h4:hover .anchorjs-link {
   height: 2rem;
   padding: .5rem;
   margin-bottom: 1rem;
-  border: 1px solid #cccccc;
+  border: 1px solid #ccc;
   font-size: .875rem;
   border-radius: 3px;
   box-sizing: border-box;
@@ -117,15 +116,14 @@ table {
 .prose table td {
   text-align: left;
   padding:8px;
-  border:1px solid #dddddd;
+  border:1px solid #ddd;
 }
 
 .prose table th:nth-child(1) { border-right: none; }
-
 .prose table th:nth-child(2) { border-left: none; }
 
 .prose table {
-  border:1px solid #dddddd;
+  border:1px solid #ddd;
 }
 
 .prose-big {

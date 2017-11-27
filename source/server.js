@@ -101,7 +101,10 @@ server.get(
 
     query = [];
 
-    if (req.query.s !== undefined) {
+    if (req.query.s !== undefined && req.query.s.trim().length === 0)
+      delete req.query.s;
+
+    if (req.query.s !== undefined && req.query.s.trim().length > 0) {
       res.setHeader("Cache-Control", "no-cache");
       query.push({
         $match: {
