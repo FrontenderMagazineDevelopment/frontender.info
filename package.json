@@ -58,9 +58,7 @@
     "mongoose": "^4.13.5",
     "query-string": "^5.0.1",
     "restify": "^6.3.4",
-    "restify-cookies": "^0.2.2"
-  },
-  "devDependencies": {
+    "restify-cookies": "^0.2.2",
     "autoprefixer": "^7.1.6",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
