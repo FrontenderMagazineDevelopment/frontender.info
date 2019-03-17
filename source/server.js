@@ -1,4 +1,3 @@
-import "babel-polyfill";
 import restify from "restify";
 import mongoose from "mongoose";
 import cookieParser from "restify-cookies";
@@ -23,18 +22,12 @@ const articlesTemplate = fs.readFileSync(
   }
 );
 
-const ENV_PATH = resolve(__dirname, "../../.env");
-const CONFIG_DIR = "../config/";
-const CONFIG_PATH = resolve(
-  __dirname,
-  `${CONFIG_DIR}application.${process.env.NODE_ENV || "local"}.json`
-);
-if (!fs.existsSync(ENV_PATH)) throw new Error("Envirnment files not found");
-dotenv.config({ path: ENV_PATH });
-
-if (!fs.existsSync(CONFIG_PATH))
-  throw new Error(`Config not found: ${CONFIG_PATH}`);
-const config = require(CONFIG_PATH); // eslint-disable-line
+const ENV_PATH = resolve(__dirname, "../.env");
+dotenv.config({
+  allowEmptyValues: false,
+  path: ENV_PATH
+});
+const { MONGODB_PORT, MONGODB_HOST, MONGODB_NAME, DOMAIN } = process.env;
 const { name, version } = require("../package.json");
 
 const PORT = process.env.PORT || 4000;
@@ -42,12 +35,8 @@ const server = restify.createServer({
   name,
   version,
   formatters: {
-    "application/json": function(req, res, body) {
-      return JSON.stringify(body);
-    },
-    "text/html": function(req, res, body) {
-      return body;
-    }
+    "application/json": (req, res, body) => JSON.stringify(body),
+    "text/html": (req, res, body) => body
   }
 });
 
@@ -184,15 +173,15 @@ server.get(
     page = Math.min(page, pagesCount);
 
     const links = [];
-    links.push(`<${config.domain}?page=1>; rel=first`);
+    links.push(`<${DOMAIN}?page=1>; rel=first`);
     if (page > 1) {
-      links.push(`<${config.domain}?page=${page - 1}>; rel=prev`);
+      links.push(`<${DOMAIN}?page=${page - 1}>; rel=prev`);
     }
-    links.push(`<${config.domain}?page=${page}>; rel=self`);
+    links.push(`<${DOMAIN}?page=${page}>; rel=self`);
     if (page < pagesCount) {
-      links.push(`<${config.domain}?page=${page + 1}>; rel=prev`);
+      links.push(`<${DOMAIN}?page=${page + 1}>; rel=prev`);
     }
-    links.push(`<${config.domain}?page=${pagesCount}>; rel=last`);
+    links.push(`<${DOMAIN}?page=${pagesCount}>; rel=last`);
     res.setHeader("Link", links.join(", "));
 
     let articles = await Article.aggregate(query)
@@ -266,16 +255,13 @@ server.get(
 );
 
 (async () => {
-  try {
-    mongoose.Promise = global.Promise;
-    await mongoose.connect(
-      `mongodb://${config.mongoDBHost}:${config.mongoDBPort}/${
-        config.mongoDBName
-      }`,
-      { useMongoClient: true }
-    );
-    server.listen(PORT);
-  } catch (error) {
-    console.log(error); // eslint-disable-line
-  }
+  mongoose.Promise = global.Promise;
+  await mongoose.connect(
+    `mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_NAME}`,
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true
+    }
+  );
+  server.listen(PORT);
 })();

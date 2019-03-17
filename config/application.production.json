@@ -1,7 +1,0 @@
-{
-  "collectionName": "articles",
-  "mongoDBHost": "localhost",
-  "mongoDBPort": 27017,
-  "mongoDBName": "fm",
-  "domain": "https://frontender.info/"
-}
