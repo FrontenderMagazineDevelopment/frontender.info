@@ -37,7 +37,7 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 COPY --from=dependencies /var/app/prod_node_modules ./node_modules
 # COPY --from=build /var/app/public ./public
 COPY --from=build /var/app/build ./build
-# COPY --from=build /var/app/source ./source
+COPY --from=build /var/app/source ./source
 COPY --from=build /var/app/lib ./lib
 
 # Setup environment variables
