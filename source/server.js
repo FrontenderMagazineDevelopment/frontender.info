@@ -17,9 +17,7 @@ const rf = new IntlRelativeFormat("ru");
 
 const articlesTemplate = fs.readFileSync(
   resolve(__dirname, "../source/components/Articles/Articles.ejs"),
-  {
-    encoding: "utf-8"
-  }
+  { encoding: "utf-8" }
 );
 
 const ENV_PATH = resolve(__dirname, "../.env");
@@ -53,13 +51,19 @@ server.pre((req, res, next) => {
   return next();
 });
 
+const staticPath = resolve(__dirname, "../build/");
+
 server.get(
-  {
-    path: /\/(styles|images)\/*/,
-    name: "Serve styles"
-  },
+  "/styles/*",
   restify.plugins.serveStatic({
-    directory: `${__dirname}/../build/`
+    directory: staticPath
+  })
+);
+
+server.get(
+  "/images/*",
+  restify.plugins.serveStatic({
+    directory: staticPath
   })
 );
 

@@ -24,14 +24,6 @@ const css = () =>
     .pipe(csso())
     .pipe(dest(paths.build.css));
 
-// gulp.task("css:common", css);
-
-// gulp.task("default", ["css:common"]);
-
-// gulp.task("watch", () => {
-//   gulp.watch([paths.source.all_css], ["css:common"]);
-// });
-
 exports.watch = () => {
   watch(paths.source.all_css, css);
 };

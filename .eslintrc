@@ -5,7 +5,6 @@
     "react",
     "jsx-a11y",
     "import",
-    "jest",
     "prettier"
   ],
   "rules": {
