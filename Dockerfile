@@ -8,6 +8,7 @@ WORKDIR /var/app
 # Copy project file
 COPY package.json .
 COPY package-lock.json .
+COPY .env .
 
 #
 # ---- Dependencies ----
@@ -36,12 +37,13 @@ RUN apk add --update bash && rm -rf /var/cache/apk/*
 # copy production node_modules
 COPY --from=dependencies /var/app/prod_node_modules ./node_modules
 # COPY --from=build /var/app/public ./public
-COPY --from=build /var/app/build ./build
+# COPY --from=build /var/app/build ./build
 COPY --from=build /var/app/source ./source
-COPY --from=build /var/app/lib ./lib
+COPY .env .
+# COPY --from=build /var/app/lib ./lib
 
 # Setup environment variables
 ENV NODE_ENV=production
 # expose port and define CMD
 EXPOSE 4000
-CMD npm run start
+CMD node ./source/server.js
