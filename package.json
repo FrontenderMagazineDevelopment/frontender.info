@@ -2,9 +2,9 @@
   "name": "@frontender-magazine/articles-list",
   "version": "1.0.0",
   "description": "Index page of magazine",
-  "main": "lib/index.js",
+  "main": "./server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node ./server.js",
     "release": "npm version patch && git push --tags",
     "clean": "rimraf public",
     "build": "gulp css",

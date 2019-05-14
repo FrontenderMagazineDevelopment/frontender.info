@@ -64,6 +64,7 @@ server.get("/", articles.get);
   await mongoose.connect(
     `mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_NAME}`,
     {
+      useUnifiedTopology: true,
       useNewUrlParser: true,
       useCreateIndex: true
     }
