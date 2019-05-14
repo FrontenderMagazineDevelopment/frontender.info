@@ -6,6 +6,8 @@ RUN mkdir -p /var/app && chown -R node /var/app
 # Set working directory
 WORKDIR /var/app
 # Copy project file
+COPY gulpfile.js .
+COPY postcss.config.js .
 COPY package.json .
 COPY package-lock.json .
 COPY .env .
@@ -13,13 +15,15 @@ COPY .env .
 #
 # ---- Dependencies ----
 FROM base AS dependencies
-RUN apk add --update python build-base
+RUN apk add --update python build-base git
 # install node packages
-RUN npm ci --only=prod --silent
+RUN export NODE_ENV=production
+RUN npm ci
 # copy production node_modules aside
 RUN cp -R node_modules prod_node_modules
-# install ALL node_modules, including 'devDependencies'
-RUN npm ci --silent
+# install only 'devDependencies'
+RUN export NODE_ENV=development
+RUN npm ci
 # Run in production mode
 
 #
@@ -33,14 +37,11 @@ RUN npm run build
 #
 # ---- Release ----
 FROM base AS release
-RUN apk add --update bash && rm -rf /var/cache/apk/*
-# copy production node_modules
+RUN apk add --update bash git && rm -rf /var/cache/apk/*
 COPY --from=dependencies /var/app/prod_node_modules ./node_modules
-# COPY --from=build /var/app/public ./public
-# COPY --from=build /var/app/build ./build
 COPY --from=build /var/app/source ./source
+COPY --from=build /var/app/public ./public
 COPY .env .
-# COPY --from=build /var/app/lib ./lib
 
 # Setup environment variables
 ENV NODE_ENV=production
