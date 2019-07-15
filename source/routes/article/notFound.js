@@ -1,10 +1,9 @@
 const ArticleSDK = require("@frontender-magazine/fm-article").default;
 const builder = require("@frontender-magazine/article-builder").default;
-const { resolve } = require("path");
 
 const { PROTOCOL, ARTICLE_SERVICE } = process.env;
 const articleSDK = new ArticleSDK(`${PROTOCOL}${ARTICLE_SERVICE}`);
-const articlesPath = resolve(process.cwd(), "../websites/articles/");
+const articlesPath = "/websites/articles/";
 
 async function notFound(req, res, err, next) {
   const {

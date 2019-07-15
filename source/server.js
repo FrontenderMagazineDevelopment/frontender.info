@@ -37,10 +37,7 @@ server.get(
 /**
  * Statics for article
  */
-server.get(
-  "/:reponame",
-  express.static(resolve(process.cwd(), "../websites/articles/"))
-);
+server.get("/:reponame", express.static("/websites/articles/"));
 
 /**
  * Build static for article
