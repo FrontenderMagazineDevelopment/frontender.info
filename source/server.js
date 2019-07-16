@@ -17,6 +17,9 @@ const envConfig = dotenv.config({
   allowEmptyValues: false,
   path: ENV_PATH
 });
+
+console.log("ENV_PATH:", ENV_PATH);
+
 if (envConfig.error) {
   throw envConfig.error;
 } else {
@@ -24,6 +27,8 @@ if (envConfig.error) {
     process.env[name] = value;
   });
 }
+
+console.log(process.env);
 
 const { MONGODB_PORT, MONGODB_HOST, MONGODB_NAME } = process.env;
 const PORT = process.env.PORT || 3000;
