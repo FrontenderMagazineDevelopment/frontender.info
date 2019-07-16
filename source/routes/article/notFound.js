@@ -5,7 +5,7 @@ const { PROTOCOL, ARTICLE_SERVICE } = process.env;
 const articleSDK = new ArticleSDK(`${PROTOCOL}${ARTICLE_SERVICE}`);
 const articlesPath = "/websites/articles/";
 
-async function notFound(req, res, err, next) {
+async function notFound(req, res) {
   const {
     originalUrl: url,
     params: { reponame }
@@ -20,7 +20,7 @@ async function notFound(req, res, err, next) {
       console.log(article);
       console.log("build to: ", reponame, articlesPath);
       await builder(reponame, articlesPath, article);
-      res.redirect(301, url, next);
+      res.redirect(302, url);
     } catch (error) {
       console.log(error);
       res.status(error.statusCode || 404).end();

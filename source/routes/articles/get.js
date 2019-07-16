@@ -37,6 +37,8 @@ async function get(req, res) {
     }
   });
 
+  console.log("show list");
+
   let result = await Event.aggregate(query);
   result = result.map(event => event.article_id);
 

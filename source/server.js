@@ -18,6 +18,7 @@ const envConfig = dotenv.config({
   path: ENV_PATH
 });
 
+console.log("staticPath:", staticPath);
 console.log("ENV_PATH:", ENV_PATH);
 
 if (envConfig.error) {
@@ -54,6 +55,7 @@ server.get("/:reponame", express.static("/websites/articles/"));
  * Build static for article
  */
 server.get("/:reponame", async (req, res, next) => {
+  console.log("not found");
   await article.notFound(req, res, next);
 });
 
