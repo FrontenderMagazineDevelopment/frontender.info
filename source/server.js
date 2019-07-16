@@ -5,6 +5,12 @@ const { resolve } = require("path");
 const dotenv = require("dotenv");
 const { articles, article } = require("./routes");
 
+process.on("uncaughtException", (error, origin) => {
+  // eslint-disable-next-line no-console
+  console.log(`Caught exception: ${error}
+Exception origin: ${origin}`);
+});
+
 const staticPath = resolve(__dirname, "../public/");
 const ENV_PATH = resolve(__dirname, "./../.env");
 const envConfig = dotenv.config({
@@ -20,7 +26,7 @@ if (envConfig.error) {
 }
 
 const { MONGODB_PORT, MONGODB_HOST, MONGODB_NAME } = process.env;
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 const server = express();
 
 server.disable("x-powered-by");
