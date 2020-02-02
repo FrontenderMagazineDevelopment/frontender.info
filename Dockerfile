@@ -1,6 +1,6 @@
-# docker run -it node:8.12-alpine /bin/bash
+# docker run -it node:lts-alpine /bin/bash
 # ---- Base Node ----
-FROM node:10-alpine AS base
+FROM node:12.9.1-alpine AS base
 # Preparing
 RUN mkdir -p /var/app && chown -R node /var/app
 # Set working directory
@@ -40,6 +40,7 @@ RUN apk add --update bash git && rm -rf /var/cache/apk/*
 COPY --from=dependencies /var/app/prod_node_modules ./node_modules
 COPY --from=build /var/app/source ./source
 COPY --from=build /var/app/public ./public
+COPY --from=build /var/app/server.js ./server.js
 
 # Setup environment variables
 ENV NODE_ENV=production

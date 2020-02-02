@@ -4,6 +4,10 @@ const queryString = require("query-string");
 const { Article, Event } = require("@frontender-magazine/models");
 const fs = require("fs");
 
+if (!global.Intl) {
+  global.Intl = require("intl"); // eslint-disable-line
+}
+
 const IntlRelativeFormat = require("intl-relativeformat");
 
 const componentsPath = resolve(process.cwd(), "source/components/");
@@ -14,9 +18,6 @@ const articlesTemplate = fs.readFileSync(
   resolve(componentsPath, "Articles/Articles.ejs"),
   { encoding: "utf-8" }
 );
-if (!global.Intl) {
-  global.Intl = require("intl"); // eslint-disable-line
-}
 
 async function get(req, res) {
   if (req.query.s !== undefined && req.query.s.trim().length === 0) {
