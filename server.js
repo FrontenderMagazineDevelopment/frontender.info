@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const compression = require("compression");
 const { resolve } = require("path");
 const dotenv = require("dotenv");
-const { articles, article } = require("./routes");
+const { articles, article } = require("./source/routes");
 
 process.on("uncaughtException", (error, origin) => {
   // eslint-disable-next-line no-console
@@ -11,15 +11,12 @@ process.on("uncaughtException", (error, origin) => {
 Exception origin: ${origin}`);
 });
 
-const staticPath = resolve(__dirname, "../public/");
-const ENV_PATH = resolve(__dirname, "./../.env");
+const staticPath = resolve(__dirname, "public");
+const ENV_PATH = resolve(__dirname, ".env");
 const envConfig = dotenv.config({
   allowEmptyValues: false,
   path: ENV_PATH
 });
-
-console.log("staticPath:", staticPath);
-console.log("ENV_PATH:", ENV_PATH);
 
 if (envConfig.error) {
   throw envConfig.error;
@@ -28,8 +25,6 @@ if (envConfig.error) {
     process.env[name] = value;
   });
 }
-
-console.log(process.env);
 
 const { MONGODB_PORT, MONGODB_HOST, MONGODB_NAME } = process.env;
 const PORT = process.env.PORT || 3000;
@@ -55,7 +50,6 @@ server.get("/:reponame", express.static("/websites/articles/"));
  * Build static for article
  */
 server.get("/:reponame", async (req, res, next) => {
-  console.log("not found");
   await article.notFound(req, res, next);
 });
 

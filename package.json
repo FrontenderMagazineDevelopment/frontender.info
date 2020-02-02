@@ -4,9 +4,9 @@
   "description": "Index page of magazine",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node ./lib/server",
-    "release": "npm version patch && git push --tags && npm publish --access public",
-    "clean": "rimraf public lib",
+    "start": "node server.js",
+    "release": "npm version patch && git push --tags",
+    "clean": "rimraf public",
     "build": "gulp css",
     "documentation": "documentation build source/*.js* -o doc -f html",
     "lint": "npm-run-all lint:*",
@@ -15,7 +15,6 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commit-msg ${HUSKY_GIT_PARAMS}",
       "pre-commit": "git add . -A && lint-staged"
     }
   },
@@ -31,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.com:TemplateMonster/PlasmaPlatform/Frontend/tm-amazon-rename.git"
+    "url": "https://github.com/FrontenderMagazineDevelopment/frontender.info.git"
   },
   "keywords": [
     "fm",
@@ -42,47 +41,48 @@
   "author": "Anton Nemtsev <thesilentimp@gmail.com> (http://silentimp.info/)",
   "license": "CC-BY-4.0",
   "dependencies": {
-    "@babel/runtime": "^7.4.3",
+    "@babel/runtime": "^7.8.4",
     "@frontender-magazine/article-builder": "^1.4.0",
     "@frontender-magazine/fm-article": "^1.6.1",
-    "@frontender-magazine/models": "^1.1.0",
+    "@frontender-magazine/models": "^1.1.1",
+    "acorn": "^7.1.0",
     "compression": "^1.7.4",
-    "dotenv": "^8.0.0",
-    "ejs": "^2.5.7",
-    "express": "^4.16.4",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
     "intl": "^1.2.5",
-    "intl-relativeformat": "^2.1.0",
+    "intl-relativeformat": "^6.4.3",
     "moment": "^2.19.2",
-    "mongoose": "^5.5.0",
+    "mongoose": "^5.8.11",
     "path": "^0.12.7",
-    "query-string": "^6.4.2"
+    "query-string": "^6.10.1"
   },
   "devDependencies": {
-    "@plasma-platform/tm-message-hook": "^2.0.14",
-    "autoprefixer": "^9.5.1",
-    "documentation": "^10.1.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-prettier": "^3.0.1",
-    "eslint-plugin-react": "^7.13.0",
-    "gulp": "^4.0.0",
+    "autoprefixer": "^9.7.4",
+    "documentation": "^12.1.4",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.2",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
-    "gulp-csso": "^3.0.0",
+    "gulp-csso": "^4.0.1",
     "gulp-order": "^1.1.1",
     "gulp-postcss": "^8.0.0",
-    "husky": "^2.2.0",
-    "lint-staged": "^8.1.6",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
     "npm-run-all": "^4.1.1",
     "postcss-conditionals": "^2.1.0",
     "postcss-import": "^12.0.1",
-    "postcss-mixins": "^6.2.0",
-    "postcss-nested": "^4.1.2",
-    "prettier": "^1.16.4",
-    "rimraf": "^2.6.2",
-    "stylelint": "^10.0.1",
-    "stylelint-scss": "^3.5.4"
+    "postcss-mixins": "^6.2.3",
+    "postcss-nested": "^4.2.1",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.1",
+    "stylelint": "^13.0.0",
+    "stylelint-scss": "^3.14.2"
   }
 }

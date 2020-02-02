@@ -45,4 +45,4 @@ COPY --from=build /var/app/public ./public
 ENV NODE_ENV=production
 # expose port and define CMD
 EXPOSE 3000
-CMD cp -R ./public/* ./static && node ./source/server.js
+CMD cp -R ./public/* ./static && node ./server.js
